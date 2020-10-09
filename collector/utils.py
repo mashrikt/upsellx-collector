@@ -1,4 +1,6 @@
 import re
+from urllib.parse import urlparse
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -107,3 +109,9 @@ def get_text_of_tag(soup, tag):
     if elem:
         return elem.find_next_sibling('div').get_text()
     return ""
+
+
+def format_url(url):
+    if not re.match('(?:http|https)://', url):
+        return 'http://{}'.format(url)
+    return url

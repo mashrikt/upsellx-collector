@@ -2,7 +2,7 @@ import json
 import uuid
 
 from .models import CollectorModel
-from .utils import scrape_website, scrape_fb_about
+from .utils import scrape_website, scrape_fb_about, format_url
 
 
 def create(event, context):
@@ -13,6 +13,7 @@ def create(event, context):
             "body": json.dumps({"error_message": "Please enter a valid URL"})
         }
     url = data['url']
+    url = format_url(url)
 
     try:
         a_collection = CollectorModel.get(url)
