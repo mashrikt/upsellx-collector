@@ -21,6 +21,9 @@ package:
     - package.json
     - package-lock.json
     - requirements.txt
+    - __pycache__/
+    - Dockerfile
+    - docker-compose.yml
 
 provider:
   name: aws
