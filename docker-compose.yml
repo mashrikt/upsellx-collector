@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+    ports:
+      - "8000:8000"
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - dynamodb
+    command: bash -c "
+        sleep 5
+        && python migration_script.py
+        && serverless offline --host 0.0.0.0
+      "
+    ports:
+      - "3000:3000"
