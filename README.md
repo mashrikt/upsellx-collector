@@ -77,5 +77,12 @@ Sample Response
 ```
 
 
+#### Possible Improvements
+- Use a Task Queue to scrape data in the background
+- Refactor to organize the code better
+- Improve security and data validation
+- Scrape full data when "See More" appears in Facebook
+
+
 #### License
 MIT
